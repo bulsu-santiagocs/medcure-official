@@ -40,6 +40,7 @@ const LoginPage = ({ onLogin }) => {
           <p className="mt-2 text-lg text-gray-500">
             Please enter your email and password to log in.
           </p>
+          {error && <p className="text-red-500 text-center mt-4">{error}</p>}
         </div>
         
         {/* The form width is constrained here */}
@@ -47,7 +48,6 @@ const LoginPage = ({ onLogin }) => {
           e.preventDefault();
           handleLogin();
         }}>
-          {error && <p className="text-red-500 text-center -mb-4">{error}</p>}
 
           <div className="relative">
             <label
