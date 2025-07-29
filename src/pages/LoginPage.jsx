@@ -7,9 +7,11 @@ const LoginPage = ({ onLogin }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = async () => {
     try {
+      setError(''); // Clear previous errors
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -20,7 +22,8 @@ const LoginPage = ({ onLogin }) => {
       onLogin();
       navigate('/');
     } catch (error) {
-      alert(error.error_description || error.message);
+      const errorMessage = error.error_description || error.message;
+      setError(errorMessage);
     }
   };
 
@@ -42,6 +45,7 @@ const LoginPage = ({ onLogin }) => {
           e.preventDefault();
           handleLogin();
         }}>
+          {error && <p className="text-red-500 text-center">{error}</p>}
           <div className="relative">
             <input
               id="email-address"

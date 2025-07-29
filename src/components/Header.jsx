@@ -1,6 +1,9 @@
-import { Search, Bell, User, ChevronDown } from 'lucide-react'
+import { useState } from 'react';
+import { Search, Bell, User, ChevronDown, LogOut } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ handleLogout }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-10 bg-white shadow-md">
       <div className="flex items-center justify-between px-6 py-4">
@@ -25,20 +28,38 @@ const Header = () => {
           </button>
 
           {/* User Profile */}
-          <div className="flex items-center space-x-3 cursor-pointer">
-            <div className="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center">
-              <User className="w-6 h-6 text-blue-800" />
-            </div>
-            <div className="text-sm">
+          <div className="relative">
+            <div
+              className="flex items-center space-x-3 cursor-pointer"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            >
+              <div className="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center">
+                <User className="w-6 h-6 text-blue-800" />
+              </div>
+              <div className="text-sm">
                 <div className="font-semibold text-gray-800">Administrator</div>
                 <div className="text-gray-500">medcure.ph</div>
+              </div>
+              <ChevronDown className="w-5 h-5 text-gray-500" />
             </div>
-            <ChevronDown className="w-5 h-5 text-gray-500" />
+
+            {/* Dropdown Menu */}
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

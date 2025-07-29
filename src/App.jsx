@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -9,13 +9,49 @@ import PointOfSales from './pages/PointOfSales';
 import Contacts from './pages/Contacts';
 import Settings from './pages/Settings';
 import LoginPage from './pages/LoginPage';
+import { supabase } from './supabase/client';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (session) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+      }
+    );
+
+    // Check for an existing session when the app loads
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        setIsLoggedIn(true);
+      }
+    };
+    checkSession();
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
   const handleLogin = () => {
     setIsLoggedIn(true);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      setIsLoggedIn(false);
+    } catch (error) {
+      alert(error.error_description || error.message);
+    }
   };
 
   if (!isLoggedIn) {
@@ -31,7 +67,7 @@ function App() {
     <div className="flex h-screen bg-gray-200">
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Header />
+        <Header handleLogout={handleLogout} />
         <main className="flex-1 p-6 overflow-auto bg-gradient-to-br from-white to-gray-100">
           <Routes>
             <Route path="/" element={<Dashboard />} />
