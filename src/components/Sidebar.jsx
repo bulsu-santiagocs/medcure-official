@@ -5,7 +5,9 @@ import {
   Settings,
   Bell,
   ShoppingCart,
-  Contact
+  Contact,
+  ChevronsLeft,
+  Menu
 } from 'lucide-react';
 import Logo from './Logo.jsx';
 
@@ -23,17 +25,14 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className={`h-screen bg-gray-100 border-r border-gray-200 text-gray-800 transition-all duration-300 ease-in-out ${expanded ? 'w-64' : 'w-20'} shadow-lg`}>
-      <div className="p-4 flex justify-between items-center border-b border-gray-200">
-        <Logo expanded={expanded} />
-        <button 
-          onClick={() => setExpanded(!expanded)}
-          className="p-2 rounded-lg hover:bg-gray-300 text-gray-700 hover:text-gray-900 transition-colors"
-        >
-          {expanded ? '«' : '»'}
-        </button>
-      </div>
-      
+    <aside className={`h-screen bg-gray-100 border-r border-gray-200 text-gray-800 transition-all duration-300 ease-in-out ${expanded ? 'w-64' : 'w-20'} shadow-lg`}>
+        <div className="p-4 flex items-center justify-between border-b border-gray-200 h-[69px]">
+            {expanded && <Logo />}
+            <button onClick={() => setExpanded(curr => !curr)} className="p-2 rounded-lg hover:bg-gray-300">
+                {expanded ? <ChevronsLeft /> : <Menu />}
+            </button>
+        </div>
+
       <nav className="p-4">
         <ul className="space-y-3">
           {menuItems.map((item) => (
@@ -55,7 +54,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </nav>
-    </div>
+    </aside>
   );
 };
 

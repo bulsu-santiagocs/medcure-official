@@ -1,10 +1,10 @@
 import logo from '../assets/images/logo-transparent.png';
 
-const Logo = ({ expanded = true }) => {
+const Logo = () => {
   return (
-    <div className={`flex items-center ${expanded ? 'space-x-4' : 'justify-center'}`}>
+    <div className="flex items-center space-x-2">
       {/* Logo Image */}
-      <div className={`${expanded ? 'h-12 w-12' : 'h-16 w-16'} flex items-center justify-center`}>
+      <div className="h-10 w-10 flex items-center justify-center">
         <img
           src={logo}
           alt="MedCure Logo"
@@ -12,12 +12,10 @@ const Logo = ({ expanded = true }) => {
         />
       </div>
 
-      {/* Logo Text - Only visible when expanded */}
-      {expanded && (
-        <div className="font-extrabold text-2xl text-gray-800">
-          <span className="logo-text">MedCure</span>
-        </div>
-      )}
+      {/* Logo Text */}
+      <div className="font-extrabold text-xl text-gray-800">
+        <span className="logo-text">MedCure</span>
+      </div>
     </div>
   );
 };
