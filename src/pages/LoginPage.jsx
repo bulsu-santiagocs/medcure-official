@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { supabase } from '../supabase/client';
 import logo from '../assets/images/logo-transparent.png';
 
@@ -100,6 +101,10 @@ const LoginPage = ({ onLogin }) => {
       </div>
     </div>
   );
+};
+
+LoginPage.propTypes = {
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default LoginPage;
