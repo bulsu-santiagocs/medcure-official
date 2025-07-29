@@ -41,33 +41,47 @@ const LoginPage = ({ onLogin }) => {
             Please enter your email and password to log in.
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={(e) => {
+        <form className="mt-8 space-y-8" onSubmit={(e) => { // Increased space with space-y-8
           e.preventDefault();
           handleLogin();
         }}>
-          {error && <p className="text-red-500 text-center">{error}</p>}
+          {error && <p className="text-red-500 text-center -mb-4">{error}</p>}
+
+          {/* Email Input with new design */}
           <div className="relative">
+            <label
+              htmlFor="email-address"
+              className="absolute left-4 -top-2 bg-white px-1 text-sm text-gray-600"
+            >
+              Email
+            </label>
             <input
               id="email-address"
               name="email"
               type="email"
               autoComplete="email"
               required
-              className="w-full px-4 py-3 text-lg text-gray-800 bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-              placeholder="Email"
+              className="w-full px-4 py-3 text-lg text-gray-800 bg-white border border-gray-400 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+
+          {/* Password Input with new design */}
           <div className="relative">
+            <label
+              htmlFor="password"
+              className="absolute left-4 -top-2 bg-white px-1 text-sm text-gray-600"
+            >
+              Password
+            </label>
             <input
               id="password"
               name="password"
               type="password"
               autoComplete="current-password"
               required
-              className="w-full px-4 py-3 text-lg text-gray-800 bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-              placeholder="Password"
+              className="w-full px-4 py-3 text-lg text-gray-800 bg-white border border-gray-400 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
