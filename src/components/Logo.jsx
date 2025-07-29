@@ -14,8 +14,8 @@ const Logo = ({ expanded = true }) => {
 
       {/* Logo Text - Only visible when expanded */}
       {expanded && (
-        <div className="font-bold text-xl text-amber-50">
-          <span className="text-amber-200">MedCure</span>
+        <div className="font-extrabold text-2xl text-black-100">
+          <span className="Logo-text">MedCure</span>
         </div>
       )}
     </div>

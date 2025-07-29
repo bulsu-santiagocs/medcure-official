@@ -23,12 +23,12 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className={`h-screen bg-indigo-800 text-white transition-all duration-300 ease-in-out ${expanded ? 'w-64' : 'w-20'} shadow-xl`}>
-      <div className="p-4 flex justify-between items-center border-b border-indigo-700">
+    <div className={`h-screen bg-gray-100 border-r border-gray-200 text-gray-800 transition-all duration-300 ease-in-out ${expanded ? 'w-64' : 'w-20'} shadow-lg`}>
+      <div className="p-4 flex justify-between items-center border-b border-gray-200">
         <Logo expanded={expanded} />
         <button 
           onClick={() => setExpanded(!expanded)}
-          className="p-2 rounded-lg hover:bg-indigo-700 text-white hover:text-indigo-100 transition-colors"
+          className="p-2 rounded-lg hover:bg-gray-300 text-gray-700 hover:text-gray-900 transition-colors"
         >
           {expanded ? '«' : '»'}
         </button>
@@ -42,11 +42,11 @@ const Sidebar = () => {
                 to={item.path}
                 className={`w-full flex items-center p-3 rounded-lg transition-all duration-200 ${
                   location.pathname === item.path
-                    ? 'bg-white text-indigo-800 shadow-md font-medium' 
-                    : 'hover:bg-indigo-700 text-indigo-100'
+                    ? 'bg-blue-600 text-white shadow-lg font-semibold' 
+                    : 'hover:bg-gray-200 text-gray-700'
                 }`}
               >
-                <span className={`flex-shrink-0 ${location.pathname === item.path ? 'text-indigo-600' : 'text-white'}`}>
+                <span className={`flex-shrink-0 ${location.pathname === item.path ? 'text-white' : 'text-gray-600'}`}>
                   {item.icon}
                 </span>
                 {expanded && <span className="ml-3">{item.name}</span>}
