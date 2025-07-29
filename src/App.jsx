@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
@@ -7,8 +8,25 @@ import Notification from './pages/Notification';
 import PointOfSales from './pages/PointOfSales';
 import Contacts from './pages/Contacts';
 import Settings from './pages/Settings';
+import LoginPage from './pages/LoginPage';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <Routes>
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    );
+  }
+
   return (
     <div className="flex h-screen bg-gray-200">
       <Sidebar />
@@ -22,6 +40,7 @@ function App() {
             <Route path="/point-of-sales" element={<PointOfSales />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
       </div>
