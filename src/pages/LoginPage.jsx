@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../components/Logo';
+import logo from '../assets/images/logo-transparent.png';
 
 const LoginPage = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const LoginPage = ({ onLogin }) => {
     <div className="flex items-center justify-center h-screen bg-blue-100 font-sans">
       <div className="w-full max-w-lg p-12 space-y-8 bg-white rounded-2xl shadow-xl">
         <div className="flex justify-center">
-          <Logo expanded={false} />
+          <img src={logo} alt="MedCure Logo" className="h-15 w-15" />
         </div>
         <div className="text-center">
           <h2 className="text-4xl font-light text-gray-800">
