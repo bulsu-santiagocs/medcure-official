@@ -41,7 +41,9 @@ const LoginPage = ({ onLogin }) => {
             Please enter your email and password to log in.
           </p>
         </div>
-        <form className="space-y-8" onSubmit={(e) => {
+        
+        {/* The form width is constrained here */}
+        <form className="w-4/5 mx-auto space-y-8" onSubmit={(e) => {
           e.preventDefault();
           handleLogin();
         }}>
@@ -60,7 +62,7 @@ const LoginPage = ({ onLogin }) => {
               type="email"
               autoComplete="email"
               required
-              className="w-full px-4 py-3 text-lg text-gray-800 bg-white border border-gray-400 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full px-4 py-3 text-lg text-gray-800 bg-white border border-gray-400 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -79,7 +81,7 @@ const LoginPage = ({ onLogin }) => {
               type="password"
               autoComplete="current-password"
               required
-              className="w-full px-4 py-3 text-lg text-gray-800 bg-white border border-gray-400 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full px-4 py-3 text-lg text-gray-800 bg-white border border-gray-400 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -88,7 +90,7 @@ const LoginPage = ({ onLogin }) => {
           <div className="pt-2"> 
             <button
               type="submit"
-              className="w-full flex justify-between items-center py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset- focus:ring-blue-500"
+              className="w-full flex justify-between items-center py-3 px-6 border border-transparent text-lg font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset- focus:ring-indigo-00"
             >
               <span>Continue</span>
               <span>&rarr;</span>
