@@ -6,8 +6,8 @@ const Header = ({ handleLogout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-      <div className="flex items-center justify-between px-6 py-3">
+    <header className="sticky top-0 z-10 flex items-center h-[69px] bg-white/80 backdrop-blur-sm border-b border-gray-200">
+      <div className="flex items-center justify-between w-full px-6">
         {/* Search Bar */}
         <div className="relative flex-1 max-w-xs">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

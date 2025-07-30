@@ -26,7 +26,7 @@ const Sidebar = () => {
 
   return (
     <aside className={`h-screen bg-gray-100 border-r border-gray-200 text-gray-800 transition-all duration-300 ease-in-out ${expanded ? 'w-64' : 'w-20'} shadow-lg`}>
-        <div className="p-4 flex items-center justify-between border-b border-gray-200 h-[69px]">
+        <div className="flex items-center justify-between h-[69px] px-4">
             {expanded && <Logo />}
             <button onClick={() => setExpanded(curr => !curr)} className="p-2 rounded-lg hover:bg-gray-300">
                 {expanded ? <ChevronsLeft /> : <Menu />}
